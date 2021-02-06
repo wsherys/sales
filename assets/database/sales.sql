@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.0.3
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Jan 15, 2021 at 08:16 AM
--- Server version: 10.4.16-MariaDB
--- PHP Version: 7.4.12
+-- Host: 127.0.0.1
+-- Generation Time: Feb 06, 2021 at 12:52 PM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.4.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -63,10 +63,18 @@ CREATE TABLE `bisnis` (
   `kode_bisnis` varchar(255) NOT NULL,
   `kode_nomor` varchar(255) NOT NULL,
   `nama_bisnis` varchar(255) NOT NULL,
-  `status` int(255) NOT NULL,
+  `status` int(1) NOT NULL,
   `tgl_masuk` datetime NOT NULL,
   `tgl_ubah` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `bisnis`
+--
+
+INSERT INTO `bisnis` (`id`, `kode_bisnis`, `kode_nomor`, `nama_bisnis`, `status`, `tgl_masuk`, `tgl_ubah`) VALUES
+(1, '123', '1234', 'tes 1', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(2, '456', '456789', 'tes 2', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -79,12 +87,20 @@ CREATE TABLE `cash_on_account` (
   `akun` varchar(255) NOT NULL,
   `sub_akun` varchar(255) NOT NULL,
   `keterangan` varchar(255) NOT NULL,
-  `coa_sign` varchar(255) NOT NULL,
-  `kode_grup_coa` int(255) NOT NULL,
+  `kas_masuk` varchar(255) NOT NULL COMMENT 'coa_sign',
+  `kode_grup_coa` varchar(255) NOT NULL,
   `status` int(255) NOT NULL,
   `tgl_masuk` datetime NOT NULL,
   `tgl_ubah` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `cash_on_account`
+--
+
+INSERT INTO `cash_on_account` (`id`, `akun`, `sub_akun`, `keterangan`, `kas_masuk`, `kode_grup_coa`, `status`, `tgl_masuk`, `tgl_ubah`) VALUES
+(1, 'akun001', 'sub001', 'tes', '1000', '001', 1, '2021-02-06 16:58:55', '2021-02-06 16:58:55'),
+(2, 'akun002', 'sub002', 'tes2', '5000', '002', 0, '2021-02-06 16:58:55', '2021-02-06 16:58:55');
 
 -- --------------------------------------------------------
 
@@ -178,6 +194,14 @@ CREATE TABLE `merek` (
   `tgl_ubah` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `merek`
+--
+
+INSERT INTO `merek` (`id`, `kode_merek`, `nama_merek`, `status`, `tgl_masuk`, `tgl_ubah`) VALUES
+(1, '222', 'merek sebelah', 1, '2021-02-06 15:22:12', '2021-02-06 15:22:12'),
+(2, '444', 'merek juga', 0, '2021-02-06 15:22:12', '2021-02-06 15:22:12');
+
 -- --------------------------------------------------------
 
 --
@@ -194,6 +218,14 @@ CREATE TABLE `partner` (
   `tgl_masuk` datetime NOT NULL,
   `tgl_ubah` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `partner`
+--
+
+INSERT INTO `partner` (`id`, `kode_partner`, `nama_partner`, `status_npwp`, `alamat`, `status`, `tgl_masuk`, `tgl_ubah`) VALUES
+(1, 'pt001', 'si aa', '1', 'jl.abc', 1, '2021-02-06 17:06:55', '2021-02-06 17:06:55'),
+(2, 'pt002', 'si c', '0', 'jl.def', 0, '2021-02-06 17:06:55', '2021-02-06 17:06:55');
 
 -- --------------------------------------------------------
 
@@ -263,15 +295,23 @@ CREATE TABLE `penjualan` (
 CREATE TABLE `produk` (
   `id` int(255) NOT NULL,
   `kode_produk` varchar(255) NOT NULL,
-  `produk` varchar(255) NOT NULL,
   `nama_produk` varchar(255) NOT NULL,
   `sub_produk` varchar(255) NOT NULL,
-  `harga` varchar(255) NOT NULL,
-  `unit` int(255) NOT NULL,
+  `harga_produk` varchar(255) NOT NULL,
+  `qty_produk` int(255) NOT NULL,
+  `unit_produk` varchar(255) NOT NULL,
   `status` int(255) NOT NULL,
   `tgl_masuk` datetime NOT NULL,
   `tgl_ubah` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `produk`
+--
+
+INSERT INTO `produk` (`id`, `kode_produk`, `nama_produk`, `sub_produk`, `harga_produk`, `qty_produk`, `unit_produk`, `status`, `tgl_masuk`, `tgl_ubah`) VALUES
+(1, '123', 'indo1', 'indo001', '1000', 1, 'Kg', 1, '2021-02-06 15:29:06', '2021-02-06 15:29:06'),
+(2, '456', 'indo2', 'indo002', '1500', 2, 'Kg', 0, '2021-02-06 15:29:06', '2021-02-06 15:29:06');
 
 -- --------------------------------------------------------
 
@@ -375,17 +415,16 @@ CREATE TABLE `tbl_menu` (
 
 INSERT INTO `tbl_menu` (`id`, `menu`, `name`, `locate_url`, `icon_name`) VALUES
 (1, 'master', 'Bisnis', 'CtrlBisnis', 'fa fa-circle-o text-aqua'),
-(2, 'master', 'Merek', '#', 'fa fa-circle-o text-aqua'),
-(3, 'master', 'Produk', '#', 'fa fa-circle-o text-aqua'),
-(4, 'master', 'Cash On Accounting', '#', 'fa fa-circle-o text-aqua'),
-(5, 'master', 'Partner', '#', 'fa fa-circle-o text-aqua'),
-(6, 'master', 'Unit', '#', 'fa fa-circle-o text-aqua'),
-(7, 'master', 'Gudang', '#', 'fa fa-circle-o text-aqua'),
-(8, 'master', 'Bank', '#', 'fa fa-circle-o text-aqua'),
-(9, 'master', 'Bank Cabang', '#', 'fa fa-circle-o text-aqua'),
-(10, 'master', 'penjualan', '#', 'fa fa-circle-o text-aqua'),
-(11, 'master', 'pengiriman', '#', 'fa fa-circle-o text-aqua'),
-(12, 'master', 'Kas Masuk', '#', 'fa fa-circle-o text-aqua'),
+(2, 'master', 'Merek/Brand', 'CtrlMerek', 'fa fa-circle-o text-aqua'),
+(3, 'master', 'Produk', 'CtrlProduk', 'fa fa-circle-o text-aqua'),
+(4, 'master', 'C.O.A / Kas masuk', 'CtrlCOA', 'fa fa-circle-o text-aqua'),
+(5, 'master', 'Partner', 'CtrlPartner', 'fa fa-circle-o text-aqua'),
+(6, 'master', 'Unit', 'CtrlUnit', 'fa fa-circle-o text-aqua'),
+(7, 'master', 'Gudang/warehouse', 'CtrlGudang', 'fa fa-circle-o text-aqua'),
+(8, 'master', 'Bank', 'CtrlBank', 'fa fa-circle-o text-aqua'),
+(9, 'master', 'Bank Cabang', 'CtrlBankCabang', 'fa fa-circle-o text-aqua'),
+(10, 'master', 'penjualan', 'CtrlPenjualan', 'fa fa-circle-o text-aqua'),
+(11, 'master', 'pengiriman', 'CtrlPengiriman', 'fa fa-circle-o text-aqua'),
 (13, 'laporan', 'Harian', '#', 'fa fa-circle-o text-aqua'),
 (14, 'laporan', 'mingguan', '#', 'fa fa-circle-o text-aqua'),
 (182, 'laporan', 'bulanan', '#', 'fa fa-circle-o text-aqua'),
@@ -393,7 +432,7 @@ INSERT INTO `tbl_menu` (`id`, `menu`, `name`, `locate_url`, `icon_name`) VALUES
 (184, 'produk', 'grup produk', '#', 'fa fa-circle-o text-aqua'),
 (185, 'produk', 'sub produk', '#', 'fa fa-circle-o text-aqua'),
 (186, 'produk', 'kategori produk', '#', 'fa fa-circle-o text-aqua'),
-(187, 'coa', 'grup C.O.A', '#', 'fa fa-circle-o text-aqua');
+(187, 'cash on account', 'grup C.O.A / Kas masuk', '#', 'fa fa-circle-o text-aqua');
 
 -- --------------------------------------------------------
 
@@ -543,13 +582,13 @@ ALTER TABLE `bank_cabang`
 -- AUTO_INCREMENT for table `bisnis`
 --
 ALTER TABLE `bisnis`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `cash_on_account`
 --
 ALTER TABLE `cash_on_account`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `cash_on_account_grp`
@@ -573,13 +612,13 @@ ALTER TABLE `kas_masuk`
 -- AUTO_INCREMENT for table `merek`
 --
 ALTER TABLE `merek`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `partner`
 --
 ALTER TABLE `partner`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `pengiriman`
@@ -597,7 +636,7 @@ ALTER TABLE `penjualan`
 -- AUTO_INCREMENT for table `produk`
 --
 ALTER TABLE `produk`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `produk_grup`
