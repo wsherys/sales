@@ -1,12 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Ctrlbisnis extends CI_Controller {
+class CtrlBankCabang extends CI_Controller {
 
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('Tbl_bisnis','bisnis');
+		$this->load->model('Tbl_BankCabang','cabang');
 		$this->load->model('Tbl_menu');
 	}
 
@@ -15,7 +15,7 @@ class Ctrlbisnis extends CI_Controller {
 		// $this->load->helper('url');
 		$this->load->helper('form');
 		
-		$status = $this->bisnis->get_status();
+		$status = $this->cabang->get_status();
 		$opt = array('' => 'pilih status');
 
 		foreach ($status as $sts) {
@@ -36,27 +36,26 @@ class Ctrlbisnis extends CI_Controller {
 		$this->load->view('_partials/head');
 		$this->load->view("_partials/navbar");
 		$this->load->view("_partials/sidebar",$data);
-		$this->load->view("_partials/breadcrumb_bisnis");
-		$this->load->view('dashboard_bisnis');
+		$this->load->view("_partials/breadcrumb_cabang");
+		$this->load->view('dashboard_cabang');
 		$this->load->view("_partials/footer");
-		$this->load->view('_partials/js_bisnis');
+		$this->load->view('_partials/js_cabang');
 	}
 
 	public function ajax_list()
 	{
-		$list = $this->bisnis->get_datatables();
+		$list = $this->cabang->get_datatables();
 		$data = array();
 		// $no = $_POST['start'];
 		$no = $this->input->post('start');
-		foreach ($list as $bisnis) {
+		foreach ($list as $cabang) {
 			$no++;
 			$row = array();
 			$row[] = $no;
-			$row[] = $bisnis->kode_bisnis;
-			$row[] = $bisnis->kode_nomor;
-			$row[] = $bisnis->nama_bisnis;
-			if($bisnis->status==='1'){$status='Aktif'; $row[] = $status;}
-			elseif($bisnis->status==='0'){$status='Tidak aktif'; $row[] = $status;}
+			$row[] = $cabang->kode_cabang;
+			$row[] = $cabang->nama_cabang;
+			if($cabang->status==='1'){$status='Aktif'; $row[] = $status;}
+			elseif($cabang->status==='0'){$status='Tidak aktif'; $row[] = $status;}
 			
 
 			$data[] = $row;
@@ -65,8 +64,8 @@ class Ctrlbisnis extends CI_Controller {
 		$output = array(
 						// "draw" => $_POST['draw'],
 						"draw" => $this->input->post('draw'),
-						"recordsTotal" => $this->bisnis->count_all(),
-						"recordsFiltered" => $this->bisnis->count_filtered(),
+						"recordsTotal" => $this->cabang->count_all(),
+						"recordsFiltered" => $this->cabang->count_filtered(),
 						"data" => $data,
 				);
 		//output to json format

@@ -1,11 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Tbl_bisnis extends CI_Model {
+class Tbl_BankCabang extends CI_Model {
 
 	var $table = 'bisnis';
-	var $column_order = array(null, 'kode_bisnis','kode_nomor','nama_bisnis','status'); //set column field database for datatable orderable
-	var $column_search = array('kode_bisnis','kode_nomor','nama_bisnis','status'); //set column field database for datatable searchable 
+	var $column_order = array(null, 'kode_cabang','nama_cabang','status'); //set column field database for datatable orderable
+	var $column_search = array('kode_cabang','nama_cabang','status'); //set column field database for datatable searchable 
 	var $order = array('id' => 'DESC'); // default order 
 
 	public function __construct()
@@ -35,20 +35,16 @@ class Tbl_bisnis extends CI_Model {
 			$this->db->where('status', $st);
 		}
 
-		if($this->input->post('kode_bisnis'))
+		if($this->input->post('kode_cabang'))
 		{
-			$this->db->like('kode_bisnis', $this->input->post('kode_bisnis'));
+			$this->db->like('kode_cabang', $this->input->post('kode_cabang'));
 		}
 
-		if($this->input->post('kode_nomor'))
+		if($this->input->post('nama_cabang'))
 		{
-			$this->db->like('kode_nomor', $this->input->post('kode_nomor'));
+			$this->db->like('nama_cabang', $this->input->post('nama_cabang'));
 		}
 
-		
-		
-
-		
 		if($this->input->post('status'))
 		{
 			$this->db->like('status', $this->input->post('status'));

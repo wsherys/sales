@@ -26,15 +26,15 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="kode" class="col-sm-2 control-label">Kode Produk</label>
+                        <label for="kode" class="col-sm-2 control-label">Kode Cabang</label>
                         <div class="col-sm-4">
-                            <input type="text" class="form-control" id="kode_produk">
+                            <input type="text" class="form-control" id="kode_cabang">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="kode_nomor" class="col-sm-2 control-label">Nama Produk</label>
+                        <label for="kode_nomor" class="col-sm-2 control-label">Nama Cabang</label>
                         <div class="col-sm-4">
-                            <input type="text" class="form-control" id="nama_produk">
+                            <input type="text" class="form-control" id="nama_cabang">
                         </div>
                     </div>
                   
@@ -52,12 +52,8 @@
             <thead>
                 <tr>
                     <th>No</th>
-                    <th>Kode Produk</th>
-                    <th>Nama Produk</th>
-                    <th>Sub Produk</th>
-                    <th>Harga Produk</th>
-                    <th>Qty Produk</th>
-                    <th>Unit Produk</th>
+                    <th>Kode Cabang</th>
+                    <th>Nama Cabang</th>
                     <th>Status</th>
                 </tr>
             </thead>

@@ -55,9 +55,9 @@ class Ctrlproduk extends CI_Controller {
 			$row[] = $produk->kode_produk;
 			$row[] = $produk->nama_produk;
 			$row[] = $produk->sub_produk;
-			$row[] = $produk->harga;
-			$row[] = $produk->qty;
-			$row[] = $produk->unit;
+			$row[] = $produk->harga_produk;
+			$row[] = $produk->qty_produk;
+			$row[] = $produk->unit_produk;
 			if($produk->status==='1'){$status='Aktif'; $row[] = $status;}
 			elseif($produk->status==='0'){$status='Tidak aktif'; $row[] = $status;}
 			

@@ -63,15 +63,18 @@
 
             // Load data for the table's content from an Ajax source
             "ajax": {
-                "url": "<?php echo site_url('CtrlProduk/ajax_list')?>",
+                "url": "<?php echo site_url('CtrlPenjualan/ajax_list')?>",
                 "type": "POST",
                 "data": function ( data ) {
-                    data.kode_produk = $('#kode_produk').val();
-                    data.nama_produk = $('#nama_produk').val();
-                    data.sub_produk = $('#sub_produk').val();
-                    data.harga = $('#harga_produk').val();
-                    data.qty = $('#qty_produk').val();
-                    data.unit = $('#unit_produk').val();
+                    data.kode_produk = $('#nomor_transaksi').val();
+                    data.nama_produk = $('#nama_order').val();
+                    data.sub_produk = $('#kode_bisnis').val();
+                    data.harga = $('#jangka_waktu').val();
+                    data.qty = $('#nama_produk').val();
+                    data.unit = $('#jumlah_produk').val();
+                    data.unit = $('#diskon_persen').val();
+                    data.unit = $('#diskon_nilai').val();
+                    data.unit = $('#harga_total').val();
                     data.status = $('#status').val();
 
                 }

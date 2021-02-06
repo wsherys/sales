@@ -1,12 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Ctrlbisnis extends CI_Controller {
+class CtrlPengiriman extends CI_Controller {
 
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('Tbl_bisnis','bisnis');
+		$this->load->model('Tbl_Pengiriman','pengiriman');
 		$this->load->model('Tbl_menu');
 	}
 
@@ -15,7 +15,7 @@ class Ctrlbisnis extends CI_Controller {
 		// $this->load->helper('url');
 		$this->load->helper('form');
 		
-		$status = $this->bisnis->get_status();
+		$status = $this->pengiriman->get_status();
 		$opt = array('' => 'pilih status');
 
 		foreach ($status as $sts) {
@@ -36,27 +36,30 @@ class Ctrlbisnis extends CI_Controller {
 		$this->load->view('_partials/head');
 		$this->load->view("_partials/navbar");
 		$this->load->view("_partials/sidebar",$data);
-		$this->load->view("_partials/breadcrumb_bisnis");
-		$this->load->view('dashboard_bisnis');
+		$this->load->view("_partials/breadcrumb_pengiriman");
+		$this->load->view('dashboard_pengiriman');
 		$this->load->view("_partials/footer");
-		$this->load->view('_partials/js_bisnis');
+		$this->load->view('_partials/js_pengiriman');
 	}
 
 	public function ajax_list()
 	{
-		$list = $this->bisnis->get_datatables();
+		$list = $this->pengiriman->get_datatables();
 		$data = array();
 		// $no = $_POST['start'];
 		$no = $this->input->post('start');
-		foreach ($list as $bisnis) {
+		foreach ($list as $pengiriman) {
 			$no++;
 			$row = array();
 			$row[] = $no;
-			$row[] = $bisnis->kode_bisnis;
-			$row[] = $bisnis->kode_nomor;
-			$row[] = $bisnis->nama_bisnis;
-			if($bisnis->status==='1'){$status='Aktif'; $row[] = $status;}
-			elseif($bisnis->status==='0'){$status='Tidak aktif'; $row[] = $status;}
+			$row[] = $pengiriman->nomor_pengiriman;
+			$row[] = $pengiriman->nomor_order;
+			$row[] = $pengiriman->nomor_lacak;
+			$row[] = $pengiriman->alamat_pengiriman;
+			$row[] = $pengiriman->tipe_pengiriman;
+			$row[] = $pengiriman->kode_gudang;
+			if($pengiriman->status==='1'){$status='Aktif'; $row[] = $status;}
+			elseif($pengiriman->status==='0'){$status='Tidak aktif'; $row[] = $status;}
 			
 
 			$data[] = $row;
@@ -65,8 +68,8 @@ class Ctrlbisnis extends CI_Controller {
 		$output = array(
 						// "draw" => $_POST['draw'],
 						"draw" => $this->input->post('draw'),
-						"recordsTotal" => $this->bisnis->count_all(),
-						"recordsFiltered" => $this->bisnis->count_filtered(),
+						"recordsTotal" => $this->pengiriman->count_all(),
+						"recordsFiltered" => $this->pengiriman->count_filtered(),
 						"data" => $data,
 				);
 		//output to json format

@@ -1,11 +1,13 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Tbl_bisnis extends CI_Model {
+class Tbl_Partner extends CI_Model {
 
-	var $table = 'bisnis';
-	var $column_order = array(null, 'kode_bisnis','kode_nomor','nama_bisnis','status'); //set column field database for datatable orderable
-	var $column_search = array('kode_bisnis','kode_nomor','nama_bisnis','status'); //set column field database for datatable searchable 
+	var $table = 'partner';
+	var $column_order = array(null, 'kode_partner','nama_partner','status_npwp',
+	'alamat', 'status'); //set column field database for datatable orderable
+	var $column_search = array('kode_partner','nama_partner','status_npwp',
+	'alamat', 'status'); //set column field database for datatable searchable 
 	var $order = array('id' => 'DESC'); // default order 
 
 	public function __construct()
@@ -18,9 +20,6 @@ class Tbl_bisnis extends CI_Model {
 	{
 		
 		//add custom filter here
-
-		
-		
 		if($this->input->post('status')=== '0')
 		{
 			// $st=$this->input->post('status');
@@ -35,19 +34,15 @@ class Tbl_bisnis extends CI_Model {
 			$this->db->where('status', $st);
 		}
 
-		if($this->input->post('kode_bisnis'))
+		if($this->input->post('kode_partner'))
 		{
-			$this->db->like('kode_bisnis', $this->input->post('kode_bisnis'));
+			$this->db->like('kode_partner', $this->input->post('kode_partner'));
 		}
 
-		if($this->input->post('kode_nomor'))
+		if($this->input->post('nama_partner'))
 		{
-			$this->db->like('kode_nomor', $this->input->post('kode_nomor'));
+			$this->db->like('nama_partner', $this->input->post('nama_partner'));
 		}
-
-		
-		
-
 		
 		if($this->input->post('status'))
 		{

@@ -36,19 +36,15 @@ class Tbl_Penjualan extends CI_Model {
 			$this->db->where('status', $st);
 		}
 
-		if($this->input->post('kode_bisnis'))
+		if($this->input->post('nomor_transaksi'))
 		{
-			$this->db->like('kode_bisnis', $this->input->post('kode_bisnis'));
+			$this->db->like('nomor_transaksi', $this->input->post('nomor_transaksi'));
 		}
 
-		if($this->input->post('kode_nomor'))
+		if($this->input->post('nama_order'))
 		{
-			$this->db->like('kode_nomor', $this->input->post('kode_nomor'));
+			$this->db->like('nama_order', $this->input->post('nama_order'));
 		}
-
-		
-		
-
 		
 		if($this->input->post('status'))
 		{

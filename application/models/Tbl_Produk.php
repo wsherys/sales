@@ -4,10 +4,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Tbl_Produk extends CI_Model {
 
 	var $table = 'produk';
-	var $column_order = array(null, 'kode_produk','nama_produk','sub_produk', 'harga', 
-	'unit', 'qty','status'); //set column field database for datatable orderable
-	var $column_search = array('kode_produk','nama_produk','sub_produk', 'harga', 'unit', 
-	'qty', 'status'); //set column field database for datatable searchable 
+	var $column_order = array(null, 'kode_produk','nama_produk','sub_produk', 'harga_produk', 
+	'unit_produk', 'qty_produk','status'); //set column field database for datatable orderable
+	var $column_search = array('kode_produk','nama_produk','sub_produk', 'harga_produk', 
+	'unit_produk', 'qty_produk', 'status'); //set column field database for datatable searchable 
 	var $order = array('id' => 'DESC'); // default order 
 
 	public function __construct()

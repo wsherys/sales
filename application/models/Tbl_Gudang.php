@@ -1,11 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Tbl_bisnis extends CI_Model {
+class Tbl_Gudang extends CI_Model {
 
 	var $table = 'bisnis';
-	var $column_order = array(null, 'kode_bisnis','kode_nomor','nama_bisnis','status'); //set column field database for datatable orderable
-	var $column_search = array('kode_bisnis','kode_nomor','nama_bisnis','status'); //set column field database for datatable searchable 
+	var $column_order = array(null, 'kode_gudang','nama_gudang','tipe_gudang','status'); //set column field database for datatable orderable
+	var $column_search = array('kode_gudang','nama_gudang','tipe_gudang','status'); //set column field database for datatable searchable 
 	var $order = array('id' => 'DESC'); // default order 
 
 	public function __construct()
@@ -35,14 +35,14 @@ class Tbl_bisnis extends CI_Model {
 			$this->db->where('status', $st);
 		}
 
-		if($this->input->post('kode_bisnis'))
+		if($this->input->post('kode_gudang'))
 		{
-			$this->db->like('kode_bisnis', $this->input->post('kode_bisnis'));
+			$this->db->like('kode_gudang', $this->input->post('kode_gudang'));
 		}
 
-		if($this->input->post('kode_nomor'))
+		if($this->input->post('nama_gudang'))
 		{
-			$this->db->like('kode_nomor', $this->input->post('kode_nomor'));
+			$this->db->like('nama_gudang', $this->input->post('nama_gudang'));
 		}
 
 		
