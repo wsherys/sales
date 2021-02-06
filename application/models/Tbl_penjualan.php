@@ -4,9 +4,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Tbl_Penjualan extends CI_Model {
 
 	var $table = 'penjualan';
-	var $column_order = array(null, 'nomor_penjualan','nama_order','kode_bisnis','status'); //set column field database for datatable orderable
-	var $column_search = array('nomor_penjualan','nama_order','kode_bisnis','kode_bisnis',
-	'jangka_waktu','nama_produk','jumlah_produk','diskon_persen','diskon_nilai', 'harga_total','status'); //set column field database for datatable searchable 
+	var $column_order = array(null, 'nomor_transaksi','nama_order','kode_bisnis',
+	'jangka_waktu','nama_produk','jumlah_produk','diskon_persen','diskon_nilai',
+	'harga_total','status'); //set column field database for datatable orderable
+	var $column_search = array('nomor_transaksi','nama_order','kode_bisnis',
+	'jangka_waktu','nama_produk','jumlah_produk','diskon_persen','diskon_nilai',
+	'harga_total','status'); //set column field database for datatable searchable 
 	var $order = array('id' => 'DESC'); // default order 
 
 	public function __construct()

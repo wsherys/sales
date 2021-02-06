@@ -66,15 +66,15 @@
                 "url": "<?php echo site_url('CtrlPenjualan/ajax_list')?>",
                 "type": "POST",
                 "data": function ( data ) {
-                    data.kode_produk = $('#nomor_transaksi').val();
-                    data.nama_produk = $('#nama_order').val();
-                    data.sub_produk = $('#kode_bisnis').val();
-                    data.harga = $('#jangka_waktu').val();
-                    data.qty = $('#nama_produk').val();
-                    data.unit = $('#jumlah_produk').val();
-                    data.unit = $('#diskon_persen').val();
-                    data.unit = $('#diskon_nilai').val();
-                    data.unit = $('#harga_total').val();
+                    data.nomor_transaksi = $('#nomor_transaksi').val();
+                    data.nama_order = $('#nama_order').val();
+                    data.kode_bisnis = $('#kode_bisnis').val();
+                    data.jangka_waktu = $('#jangka_waktu').val();
+                    data.nama_produk = $('#nama_produk').val();
+                    data.jumlah_produk = $('#jumlah_produk').val();
+                    data.diskon_persen = $('#diskon_persen').val();
+                    data.diskon_nilai = $('#diskon_nilai').val();
+                    data.harga_total = $('#harga_total').val();
                     data.status = $('#status').val();
 
                 }

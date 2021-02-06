@@ -4,9 +4,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Tbl_Pengiriman extends CI_Model {
 
 	var $table = 'pengiriman';
-	var $column_order = array(null, 'kode_pengiriman','nomor_order','nomor_lacak',
+	var $column_order = array(null, 'nomor_pengiriman','nomor_order','nomor_lacak',
 	'alamat_pengiriman', 'tipe_pengiriman', 'kode_gudang', 'status'); //set column field database for datatable orderable
-	var $column_search = array('kode_pengiriman','nomor_order','nomor_lacak',
+	var $column_search = array('nomor_pengiriman','nomor_order','nomor_lacak',
 	'alamat_pengiriman', 'tipe_pengiriman', 'kode_gudang', 'status'); //set column field database for datatable searchable 
 	var $order = array('id' => 'DESC'); // default order 
 

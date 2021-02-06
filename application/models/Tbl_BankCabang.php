@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Tbl_BankCabang extends CI_Model {
 
-	var $table = 'bisnis';
+	var $table = 'bank_cabang';
 	var $column_order = array(null, 'kode_cabang','nama_cabang','status'); //set column field database for datatable orderable
 	var $column_search = array('kode_cabang','nama_cabang','status'); //set column field database for datatable searchable 
 	var $order = array('id' => 'DESC'); // default order 

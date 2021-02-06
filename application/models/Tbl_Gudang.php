@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Tbl_Gudang extends CI_Model {
 
-	var $table = 'bisnis';
+	var $table = 'gudang';
 	var $column_order = array(null, 'kode_gudang','nama_gudang','tipe_gudang','status'); //set column field database for datatable orderable
 	var $column_search = array('kode_gudang','nama_gudang','tipe_gudang','status'); //set column field database for datatable searchable 
 	var $order = array('id' => 'DESC'); // default order 
