@@ -13,7 +13,7 @@
                         <!-- <h3 class="panel-title" >Filter : </h3> -->
                     </div>
                     <div class="col-md-2">
-                        <a href="#1"><button class="btn btn-sm btn-primary" style="width:100%;">Tambah data</button></a>
+                        <a href="#2"><button class="btn btn-sm btn-primary" style="width:100%;">Tambah data</button></a>
                     </div>
                 </div>
             </div>
