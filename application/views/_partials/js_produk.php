@@ -7,14 +7,19 @@
     <script src="<?= base_url(); ?>assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
         
     <script src="<?php echo base_url('assets/jquery/jquery-2.2.3.min.js')?>"></script>
+    
     <script src="<?php echo base_url('assets/bootstrap/js/bootstrap.min.js')?>"></script>
     <script src="<?php echo base_url('assets/datatables/js/jquery.dataTables.min.js')?>"></script>
     <script src="<?php echo base_url('assets/datatables/js/dataTables.bootstrap.min.js')?>"></script>
+   
+    <!-- <script src="<?= base_url();?>assets/datatables/responsive.bootstrap.min.js"></script> -->
+    <script src="<?= base_url();?>assets/datatables/dataTables.rowReorder.min.js"></script>
+    <script src="<?= base_url();?>assets/datatables/dataTables.responsive.min.js"></script>
     
-
+    
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
     <script>
-    $.widget.bridge('uibutton', $.ui.button);
+    // $.widget.bridge('uibutton', $.ui.button);
     </script>
     <!-- Bootstrap 3.3.7 -->
     <script src="<?= base_url(); ?>assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -56,6 +61,10 @@
         //datatables
         table = $('#table').DataTable({ 
 
+            rowReorder: {
+            selector: 'td:nth-child(2)'
+            },
+            "responsive": true,
             "processing": true, //Feature control the processing indicator.
             "serverSide": true, //Feature control DataTables' server-side processing mode.
             "searching": false,

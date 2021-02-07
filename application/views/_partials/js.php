@@ -5,9 +5,14 @@
         <script src="<?= base_url(); ?>assets/bower_components/jquery/dist/jquery.min.js"></script>
         <!-- jQuery UI 1.11.4 -->
         <script src="<?= base_url(); ?>assets/bower_components/jquery-ui/jquery-ui.min.js"></script>
+
+        <!-- <script src="<?= base_url();?>assets/datatables/responsive.bootstrap.min.js"></script> -->
+        <script src="<?= base_url();?>assets/datatables/dataTables.rowReorder.min.js"></script>
+        <script src="<?= base_url();?>assets/datatables/dataTables.responsive.min.js"></script>
+
         <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
         <script>
-        $.widget.bridge('uibutton', $.ui.button);
+        // $.widget.bridge('uibutton', $.ui.button);
         </script>
         <!-- Bootstrap 3.3.7 -->
         <script src="<?= base_url(); ?>assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>

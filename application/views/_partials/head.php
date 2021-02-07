@@ -34,6 +34,10 @@
 
     <link href="<?php echo base_url('assets/bootstrap/css/bootstrap.min.css')?>" rel="stylesheet">  
     <link href="<?php echo base_url('assets/datatables/css/dataTables.bootstrap.min.css')?>" rel="stylesheet">
+    <!-- datatable -->
+    <!-- <link href="<?= base_url();?>assets/datatables/jquery.dataTables.min.css" rel="stylesheet"> -->
+    <link href="<?= base_url();?>assets/datatables/rowReorder.dataTables.min.css" rel="stylesheet">
+    <link href="<?= base_url();?>assets/datatables/responsive.dataTables.min.css" rel="stylesheet">
     </head>
 
 </html>

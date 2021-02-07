@@ -48,16 +48,16 @@
                 </form>
             </div>
         </div>
-        <table id="table" class="table table-striped table-bordered" cellspacing="0" width="100%">
+        <table id="table" class="table table-striped table-bordered nowrap" cellspacing="0" width="100%">
             <thead>
                 <tr>
                     <th>No</th>
                     <th>Kode Produk</th>
                     <th>Nama Produk</th>
                     <th>Sub Produk</th>
-                    <th>Harga Produk</th>
-                    <th>Qty Produk</th>
-                    <th>Unit Produk</th>
+                    <th>Harga </th>
+                    <th>Qty </th>
+                    <th>Satuan/Unit</th>
                     <th>Status</th>
                 </tr>
             </thead>
