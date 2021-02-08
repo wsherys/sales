@@ -13,7 +13,7 @@
                         <!-- <h3 class="panel-title" >Filter : </h3> -->
                     </div>
                     <div class="col-md-2">
-                        <a href="#"><button class="btn btn-sm btn-primary" style="width:100%;">Tambah data</button></a>
+                        <a href="<?= site_url("CtrlBisnis/add");?>"><button class="btn btn-sm btn-primary" style="width:100%;">Tambah data</button></a>
                     </div>
                 </div>
             </div>
@@ -53,6 +53,8 @@
                 </form>
             </div>
         </div>
+        <?php if(empty($status)){}else{echo "<div class='alert alert-success'><center><strong>Success!</strong> ".$status."<center></div>";} ?>
+
         <table id="table" class="table table-striped table-bordered" cellspacing="0" width="100%">
             <thead>
                 <tr>
@@ -61,6 +63,7 @@
                     <th>Kode Nomor</th>
                     <th>Nama Bisnis</th>
                     <th>Status</th>
+                    <th>&nbsp;</th>
                 </tr>
             </thead>
             <tbody>
