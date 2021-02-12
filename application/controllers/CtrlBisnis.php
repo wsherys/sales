@@ -72,6 +72,8 @@ class CtrlBisnis extends CI_Controller {
 		$this->load->view('_partials/js_bisnis');
 	}
 
+
+	
 	public function add()
 	{
 
@@ -95,6 +97,7 @@ class CtrlBisnis extends CI_Controller {
 		$this->load->view("_partials/footer");
 		$this->load->view('_partials/js_bisnis_add');
 	}
+	
 
 
 	
@@ -111,10 +114,12 @@ class CtrlBisnis extends CI_Controller {
 
 		$this->form_validation->set_rules('kode_bisnis', 'kode_bisnis', 'required|is_unique[bisnis.kode_bisnis]|alpha_numeric',
 		array(
-			'required' => 'masukkan <b>Kode bisnis</b>.',
 			'is_unique' => '<b>Kode bisnis</b> sudah terdaftar.',
-			'alpha_numeric' => '<b>Kode bisnis</b> wajib Alpha numerik tanpa spasi.',
+			'required' => 'masukkan <b>Kode bisnis</b>.',
+			'alpha_numeric' => ' wajib alpha numerik<b>Kode bisnis</b>.'
 		));
+		
+
 
 		$this->form_validation->set_rules('kode_nomor', 'kode_nomor', 'required|numeric',
 		array(
@@ -128,6 +133,8 @@ class CtrlBisnis extends CI_Controller {
 			'required' => 'masukkan <b>Nama bisnis</b>.',
 		));
 
+		$this->form_validation->set_rules('kode_bisnis', 'kode_bisnis', 'required|is_unique[bisnis.kode_bisnis]|alpha_numeric');
+
 
 		if($this->form_validation->run() != false){
 			$data=array('kode_bisnis'=>$kode_bisnis,
@@ -136,35 +143,9 @@ class CtrlBisnis extends CI_Controller {
 			'status'=>$status,
 			);
 			$this->db->insert('bisnis', $data);
-
 			$this->index_sukses();
 		}else{
-			$old=array('kode_bisnis'=>$kode_bisnis,
-			'kode_nomor'=>$kode_nomor,
-			'nama_bisnis'=>$nama_bisnis,
-			'status'=>$status,
-			);
-			// $this->add_err($data);
-
-			$this->load->helper(array('form', 'url'));
-			$this->load->library('form_validation');
-
-			$menu = $this->Tbl_menu->get_menu();
-			$data=array(
-				'menu'=>$menu,
-				'err'=>'',
-				'kode_bisnis'=>$kode_bisnis,
-				'kode_nomor'=>$kode_nomor,
-				'nama_bisnis'=>$nama_bisnis,
-			);
-
-			$this->load->view('_partials/head');
-			$this->load->view("_partials/navbar");
-			$this->load->view("_partials/sidebar",$data);
-			$this->load->view("_partials/breadcrumb_bisnis_add");
-			$this->load->view('bisnis_add');
-			$this->load->view("_partials/footer");
-			$this->load->view('_partials/js_bisnis_add');
+			$this->add();
 		}
 		
 	}
@@ -199,5 +180,7 @@ class CtrlBisnis extends CI_Controller {
 		//output to json format
 		echo json_encode($output);
 	}
+
+
 
 }

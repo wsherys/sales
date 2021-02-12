@@ -38,7 +38,9 @@
                 <div class="form-group">
                     <label for="kode_bisnis" class="col-sm-2 control-label">Kode Bisnis <span style="color: red;">*</span></label>
                     <div class="col-sm-10">
-                    <input type="text" name="kode_bisnis" id="kode_bisnis" value="<?php if(empty($kode_bisnis)){$kode_bisnis='';}else{ echo $kode_bisnis;}  ?>" class="form-control">
+                    <!-- <input type="text" name="kode_bisnis" id="kode_bisnis" value="<?php if(empty($kode_bisnis)){$kode_bisnis='';}else{ echo $kode_bisnis;}  ?>" class="form-control"> -->
+                    <input type="text" name="kode_bisnis" id="kode_bisnis" value="<?php echo set_value('kode_bisnis'); ?>" class="form-control">
+                    
                     </div>
                 </div>
 
@@ -50,7 +52,7 @@
                 <div class="form-group">
                     <label for="kode_nomor" class="col-sm-2 control-label">Kode Nomor <span style="color: red;">*</span></label>
                     <div class="col-sm-10">
-                    <input type="text" name="kode_nomor" id="kode_nomor" value="<?php if(empty($kode_nomor)){$kode_nomor='';}else{ echo $kode_nomor;}  ?>" class="form-control">
+                    <input type="text" name="kode_nomor" id="kode_nomor" value="<?php echo set_value('kode_nomor'); ?>" class="form-control">
                     </div>
                 </div>
                 
@@ -62,7 +64,7 @@
                 <div class="form-group">
                     <label for="nama_bisnis" class="col-sm-2 control-label">Nama Bisnis <span style="color: red;">*</span></label>
                     <div class="col-sm-10">
-                    <input type="text" name="nama_bisnis" id="nama_bisnis" value="<?php if(empty($nama_bisnis)){$nama_bisnis='';}else{ echo $nama_bisnis;}  ?>" class="form-control">
+                    <input type="text" name="nama_bisnis" id="nama_bisnis" value="<?php echo set_value('nama_bisnis'); ?>" class="form-control">
                     </div>
                 </div>
 
