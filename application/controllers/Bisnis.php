@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class CtrlBisnis extends CI_Controller {
+class Bisnis extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
@@ -11,7 +11,7 @@ class CtrlBisnis extends CI_Controller {
 
 	public function index()
 	{
-		// $this->load->helper('url');
+		$this->load->helper('url');
 		$this->load->helper('form');
 		
 		$status = $this->bisnis->get_status();
@@ -27,10 +27,12 @@ class CtrlBisnis extends CI_Controller {
 		$data=array(
 			'menu'=>$menu,
 			'err'=>'',
+			'add'=>'/sales/index.php/CRUDBisnis/add_form',
+			'GoBack'=>'GoBack',
+			'ListAjax'=>'Bisnis/List_ajax',
 			'form_status'=>form_dropdown('',$opt,'','id="status" class="form-control"'),
 		);
 
-		// $data['form_status'] = form_dropdown('',$opt,'','id="status" class="form-control"');
 		$this->load->view('_partials/head');
 		$this->load->view("_partials/navbar");
 		$this->load->view("_partials/sidebar",$data);
@@ -42,7 +44,7 @@ class CtrlBisnis extends CI_Controller {
 
 	public function index_sukses()
 	{
-		// $this->load->helper('url');
+		$this->load->helper('url');
 		$this->load->helper('form');
 		
 		$status = $this->bisnis->get_status();
@@ -59,6 +61,9 @@ class CtrlBisnis extends CI_Controller {
 			'menu'=>$menu,
 			'err'=>'',
 			'status'=>'Data ditambahkan.',
+			'add'=>'/sales/index.php/CRUDBisnis/add_form',
+			'GoBack'=>'GoBack',
+			'ListAjax'=>'Bisnis/List_ajax',
 			'form_status'=>form_dropdown('',$opt,'','id="status" class="form-control"'),
 		);
 
@@ -72,85 +77,7 @@ class CtrlBisnis extends CI_Controller {
 		$this->load->view('_partials/js_bisnis');
 	}
 
-
-	
-	public function add()
-	{
-
-		$this->load->helper(array('form', 'url'));
-		$this->load->library('form_validation');
-
-		$menu = $this->Tbl_menu->get_menu();
-		$data=array(
-			'menu'=>$menu,
-			'err'=>'',
-			'kode_bisnis'=>'',
-			'kode_nomor'=>'',
-			'nama_bisnis'=>'',
-		);
-
-		$this->load->view('_partials/head');
-		$this->load->view("_partials/navbar");
-		$this->load->view("_partials/sidebar",$data);
-		$this->load->view("_partials/breadcrumb_bisnis_add");
-		$this->load->view('bisnis_add');
-		$this->load->view("_partials/footer");
-		$this->load->view('_partials/js_bisnis_add');
-	}
-	
-
-
-	
-
-	public function ajax_add()
-	{
-		// $this->load->helper(array('form', 'url'));
-		$this->load->library('form_validation');
-
-		$kode_bisnis=$this->input->post('kode_bisnis');
-		$kode_nomor=$this->input->post('kode_nomor');
-		$nama_bisnis=$this->input->post('nama_bisnis');
-		$status=$this->input->post('status');
-
-		$this->form_validation->set_rules('kode_bisnis', 'kode_bisnis', 'required|is_unique[bisnis.kode_bisnis]|alpha_numeric',
-		array(
-			'is_unique' => '<b>Kode bisnis</b> sudah terdaftar.',
-			'required' => 'masukkan <b>Kode bisnis</b>.',
-			'alpha_numeric' => ' wajib alpha numerik<b>Kode bisnis</b>.'
-		));
-		
-
-
-		$this->form_validation->set_rules('kode_nomor', 'kode_nomor', 'required|numeric',
-		array(
-			'required' => 'masukkan <b>Kode Nomor</b>.',
-			// 'is_unique' => '<b>Kode Nomor</b> sudah terdaftar.',
-			'numeric' => '<b>Kode Nomor</b> wajib berupa angka.',
-		));
-
-		$this->form_validation->set_rules('nama_bisnis', 'nama_bisnis', 'required',
-		array(
-			'required' => 'masukkan <b>Nama bisnis</b>.',
-		));
-
-		$this->form_validation->set_rules('kode_bisnis', 'kode_bisnis', 'required|is_unique[bisnis.kode_bisnis]|alpha_numeric');
-
-
-		if($this->form_validation->run() != false){
-			$data=array('kode_bisnis'=>$kode_bisnis,
-			'kode_nomor'=>$kode_nomor,
-			'nama_bisnis'=>$nama_bisnis,
-			'status'=>$status,
-			);
-			$this->db->insert('bisnis', $data);
-			$this->index_sukses();
-		}else{
-			$this->add();
-		}
-		
-	}
-
-	public function ajax_list()
+	public function list_ajax()
 	{
 		$list = $this->bisnis->get_datatables();
 		$data = array();
@@ -165,7 +92,8 @@ class CtrlBisnis extends CI_Controller {
 			$row[] = $bisnis->nama_bisnis;
 			if($bisnis->status==='1'){$status='Aktif'; $row[] = $status;}
 			elseif($bisnis->status==='0'){$status='Tidak aktif'; $row[] = $status;}
-			$row[] = '<center><a href=CtrlBisnis/ubah/'.$bisnis->id.'>ubah</a> &nbsp; <a href=CtrlBisnis/hapus/'.$bisnis->id.'>hapus</a></center>';
+			$row[] = '<center><a href=/sales/index.php/CRUDBisnis/edit_form/'.$id=$bisnis->id.'> edit</a> &nbsp; 
+					<a href=/sales/index.php/CRUDBisnis/hapus/'.$id=$bisnis->id.'>hapus</a></center>';
 
 			$data[] = $row;
 		}

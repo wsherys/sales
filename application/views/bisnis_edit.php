@@ -10,7 +10,7 @@
             <div class="panel-heading">
                 <div class="row" style="padding:'1px';">
                     <div class="col-md-2">
-                        <h3 class="panel-title" >Form Tambah </h3>
+                        <h3 class="panel-title" >Form Edit </h3>
                         <!-- <a href="<?= site_url("CtrlBisnis");?>"><button class="btn btn-sm btn-primary" style="width:100%;">Kembali</button></a> -->
                     </div>
                     <div class="col-md-10">
@@ -38,14 +38,17 @@
                     <p style="color: red;">kode nomor wajib numerik tanpa spasi.*</p>
                     </div>
                 <?php }?>
-               
-                <?php echo form_open($AddAjax); ?>
+
+                <?php echo form_open($EditAjax); ?>
                 <form id="formMhs" method="POST" class="form-horizontal">
+                <?php foreach($bisnis as $e){?>
+
                 <div class="form-group">
                     <label for="kode_bisnis" class="col-sm-2 control-label">Kode Bisnis <span style="color: red;">*</span></label>
                     <div class="col-sm-10">
-                    <!-- <input type="text" name="kode_bisnis" id="kode_bisnis" value="<?php if(empty($kode_bisnis)){$kode_bisnis='';}else{ echo $kode_bisnis;}  ?>" class="form-control"> -->
-                    <input type="text" name="kode_bisnis" id="kode_bisnis" value="<?php echo set_value('kode_bisnis'); ?>" class="form-control">
+                    <input type="hidden" name="id" id="id" value="<?= $e->id; ?>" class="form-control">
+                    <input type="text" name="kode_bisnis" id="kode_bisnis" 
+                    value="<?php if(set_value('kode_bisnis')!==''){echo set_value('kode_bisnis'); }else{ echo $e->kode_bisnis; } ?>" class="form-control">
                     
                     </div>
                 </div>
@@ -58,7 +61,8 @@
                 <div class="form-group">
                     <label for="kode_nomor" class="col-sm-2 control-label">Kode Nomor <span style="color: red;">*</span></label>
                     <div class="col-sm-10">
-                    <input type="text" name="kode_nomor" id="kode_nomor" value="<?php echo set_value('kode_nomor'); ?>" class="form-control">
+                    <input type="text" name="kode_nomor" id="kode_nomor" 
+                    value="<?php if(set_value('kode_nomor')!==''){echo set_value('kode_nomor'); }else{ echo $e->kode_nomor; } ?>" class="form-control">
                     </div>
                 </div>
                 
@@ -70,7 +74,8 @@
                 <div class="form-group">
                     <label for="nama_bisnis" class="col-sm-2 control-label">Nama Bisnis <span style="color: red;">*</span></label>
                     <div class="col-sm-10">
-                    <input type="text" name="nama_bisnis" id="nama_bisnis" value="<?php echo set_value('nama_bisnis'); ?>" class="form-control">
+                    <input type="text" name="nama_bisnis" id="nama_bisnis" 
+                    value="<?php if(set_value('nama_bisnis')!==''){echo set_value('nama_bisnis'); }else{ echo $e->nama_bisnis; } ?>" class="form-control">
                     </div>
                 </div>
 
@@ -105,6 +110,7 @@
                 </div>
 
                 </form>
+                <?php } ?>
 
                 <div id="status"></div>
             </div>
@@ -136,7 +142,7 @@
             e.preventDefault();
             $.ajax({
                 //  url: 'simpan-data.php',
-                url: "<?= $AddAjax; ?>",
+                url: "<?= $EditAjax; ?>",
                 type: 'POST',
                 data: $(this).serialize(),             
                 success: function(data) {

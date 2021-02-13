@@ -21,7 +21,7 @@
           <div class="inner">
             <h3>&nbsp;</h3>
 
-            <p>Pembelian</p>
+            <p>Penjualan</p>
           </div>
           <div class="icon" style="padding: 5%;">
             <i class="ion ion-bag"></i>
