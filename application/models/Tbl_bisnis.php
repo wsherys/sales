@@ -18,9 +18,6 @@ class Tbl_bisnis extends CI_Model {
 	{
 		
 		//add custom filter here
-
-		
-		
 		if($this->input->post('status')=== '0')
 		{
 			// $st=$this->input->post('status');
@@ -127,6 +124,10 @@ class Tbl_bisnis extends CI_Model {
 			$status[] = $row->status;
 		}
 		return $status;
+	}
+
+	function get_kodebisnis(){		
+		return $this->db->query('SELECT * FROM bisnis ORDER BY id DESC LIMIT 1');
 	}
 
 	function edit_data($where){		

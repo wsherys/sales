@@ -13,7 +13,7 @@
                         <!-- <h3 class="panel-title" >Filter : </h3> -->
                     </div>
                     <div class="col-md-2">
-                        <a href="#"><button class="btn btn-sm btn-primary" style="width:100%;">Tambah data</button></a>
+                        <a href="<?= $add;?>"><button class="btn btn-sm btn-primary" style="width:100%;">Tambah data</button></a>
                     </div>
                 </div>
             </div>
@@ -26,13 +26,13 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="kode" class="col-sm-2 control-label">Kode Bank</label>
+                        <label for="kode_bank" class="col-sm-2 control-label">Kode Bank</label>
                         <div class="col-sm-4">
                             <input type="text" class="form-control" id="kode_bank">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="kode_nomor" class="col-sm-2 control-label">Nama Bank</label>
+                        <label for="nama_bank" class="col-sm-2 control-label">Nama Bank</label>
                         <div class="col-sm-4">
                             <input type="text" class="form-control" id="nama_bank">
                         </div>
@@ -48,6 +48,8 @@
                 </form>
             </div>
         </div>
+        <?php if(empty($status)){}else{echo "<div class='alert alert-success'><center><strong>Success!</strong> ".$status."<center></div>";} ?>
+
         <table id="table" class="table table-striped table-bordered" cellspacing="0" width="100%">
             <thead>
                 <tr>
@@ -55,6 +57,7 @@
                     <th>Kode Bank</th>
                     <th>Nama Bank</th>
                     <th>Status</th>
+                    <th>&nbsp;</th>
                 </tr>
             </thead>
             <tbody>

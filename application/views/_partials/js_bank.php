@@ -71,11 +71,11 @@
 
             // Load data for the table's content from an Ajax source
             "ajax": {
-                "url": "<?php echo site_url('CtrlBank/ajax_list')?>",
+                "url": "<?= site_url($ListAjax); ?>",
                 "type": "POST",
                 "data": function ( data ) {
-                    data.kode_produk = $('#kode_bank').val();
-                    data.nama_produk = $('#nama_bank').val();
+                    data.kode_bank = $('#kode_bank').val();
+                    data.nama_bank = $('#nama_bank').val();
                     data.status = $('#status').val();
 
                 }

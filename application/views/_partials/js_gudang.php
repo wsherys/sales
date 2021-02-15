@@ -71,12 +71,12 @@
 
             // Load data for the table's content from an Ajax source
             "ajax": {
-                "url": "<?php echo site_url('CtrlGudang/ajax_list')?>",
+                "url": "<?= site_url($ListAjax); ?>",
                 "type": "POST",
                 "data": function ( data ) {
-                    data.kode_produk = $('#kode_gudang').val();
-                    data.nama_produk = $('#nama_gudang').val();
-                    data.sub_produk = $('#tipe_gudang').val();
+                    data.kode_gudang = $('#kode_gudang').val();
+                    data.nama_gudang = $('#nama_gudang').val();
+                    data.tipe_gudang = $('#tipe_gudang').val();
                     data.status = $('#status').val();
 
                 }

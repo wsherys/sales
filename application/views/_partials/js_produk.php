@@ -72,7 +72,7 @@
 
             // Load data for the table's content from an Ajax source
             "ajax": {
-                "url": "<?php echo site_url('CtrlProduk/ajax_list')?>",
+                "url": "<?= site_url($ListAjax); ?>",
                 "type": "POST",
                 "data": function ( data ) {
                     data.kode_produk = $('#kode_produk').val();

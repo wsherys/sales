@@ -71,14 +71,14 @@
 
             // Load data for the table's content from an Ajax source
             "ajax": {
-                "url": "<?php echo site_url('CtrlCOA/ajax_list')?>",
+                "url": "<?= site_url($ListAjax); ?>",
                 "type": "POST",
                 "data": function ( data ) {
-                    data.kode_produk = $('#akun').val();
-                    data.nama_produk = $('#sub_akun').val();
-                    data.qty = $('#kode_grup_coa').val();
-                    data.harga = $('#kas_masuk').val();
-                    data.sub_produk = $('#keterangan').val();
+                    data.akun = $('#akun').val();
+                    data.sub_akun = $('#sub_akun').val();
+                    data.kode_grup_coa = $('#kode_grup_coa').val();
+                    data.kas_masuk = $('#kas_masuk').val();
+                    data.keterangan = $('#keterangan').val();
                     data.status = $('#status').val();
 
                 }

@@ -18,6 +18,16 @@ class CRUDBisnis extends CI_Controller {
 	{
 		$this->load->helper(array('form', 'url'));
 
+        $kdnomor['kdbisnis']=$this->bisnis->get_kodebisnis()->result();
+        foreach($kdnomor['kdbisnis'] as $d){}
+        if(empty($d->kode_nomor)){$kode_nomor='01';}else{$kode_nomor=$d->kode_nomor;
+            if($d->kode_nomor<10){ 
+                $kode_nomor='0'.$d->kode_nomor+1;
+            }else{
+                $kode_nomor=$d->kode_nomor+1;
+            }
+        }
+
 		$menu = $this->Tbl_menu->get_menu();
 		$data=array(
 			'menu'=>$menu,
@@ -26,7 +36,7 @@ class CRUDBisnis extends CI_Controller {
 			'GoBack'=>'GoBack',
 			'AddAjax'=>'CRUDBisnis/add_ajax',
 			'kode_bisnis'=>'',
-			'kode_nomor'=>'',
+			'kode_nomor'=>$kode_nomor,
 			'nama_bisnis'=>'',
 		);
 
@@ -47,7 +57,17 @@ class CRUDBisnis extends CI_Controller {
 		$nama_bisnis=$this->input->post('nama_bisnis');
 		$status=$this->input->post('status');
 
-        $regex="/^[a-zA-Z]+[a-zA-Z0-9]{2,18}$/";
+        $kdnomor['kdbisnis']=$this->bisnis->get_kodebisnis()->result();
+        foreach($kdnomor['kdbisnis'] as $d){}
+        if(empty($d->kode_nomor)){$kode_nomor='01';}else{$kode_nomor=$d->kode_nomor;
+            if($d->kode_nomor<10){ 
+                $kode_nomor='0'.$d->kode_nomor+1;
+            }else{
+                $kode_nomor=$d->kode_nomor+1;
+            }
+        }
+
+        $regex="/^[a-zA-Z]+[a-zA-Z0-9]{2,10}$/";
         if(!preg_match_all($regex, $kode_bisnis)){
 
             $this->load->helper(array('form', 'url'));
@@ -56,10 +76,10 @@ class CRUDBisnis extends CI_Controller {
                 'menu'=>$menu,
                 'err'=>'1',
                 'add'=>'CRUDBisnis/add_form',
-                'GoBack'=>'GoBack',
+                'GoBack'=>'CRUDBisnis/GoBack',
                 'AddAjax'=>'CRUDBisnis/add_ajax',
                 'kode_bisnis'=>'',
-                'kode_nomor'=>'',
+                'kode_nomor'=>$kode_nomor,
                 'nama_bisnis'=>'',
             );
 
@@ -91,12 +111,17 @@ class CRUDBisnis extends CI_Controller {
 
 
             if($this->form_validation->run() != false){
+
+                $data['kdbisnis']=$this->bisnis->get_kodebisnis()->result();
+                foreach($data['kdbisnis'] as $d){}
+
                 $data=array(
                 'kode_bisnis'=>$kode_bisnis,
                 'kode_nomor'=>$kode_nomor,
                 'nama_bisnis'=>$nama_bisnis,
                 'status'=>$status,
                 );
+
                 $this->db->insert('bisnis', $data);
                 redirect('Bisnis/index_sukses');
             }else{
@@ -117,8 +142,8 @@ class CRUDBisnis extends CI_Controller {
             'menu'=>$menu,
             'err'=>'',
             'add'=>'CRUDBisnis/add_form',
-            'GoBack'=>'GoBack',
-            'AddAjax'=>'CRUDBisnis/add_ajax',
+            'GoBack'=>'/sales/index.php/CRUDBisnis/GoBack',
+            // 'AddAjax'=>'CRUDBisnis/add_ajax',
             'EditAjax'=>'CRUDBisnis/update',
             'kode_bisnis'=>'',
             'kode_nomor'=>'',
@@ -145,7 +170,7 @@ class CRUDBisnis extends CI_Controller {
         $status=$this->input->post('status');
         
 
-        $regex="/^[a-zA-Z]+[a-zA-Z0-9]{2,18}$/";
+        $regex="/^[a-zA-Z]+[a-zA-Z0-9]{2,10}$/";
         if(!preg_match_all($regex, $kode_bisnis)){
 
             $where = array('id' => $id);

@@ -71,15 +71,15 @@
 
             // Load data for the table's content from an Ajax source
             "ajax": {
-                "url": "<?php echo site_url('CtrlPengiriman/ajax_list')?>",
+                "url": "<?= site_url($ListAjax); ?>",
                 "type": "POST",
                 "data": function ( data ) {
-                    data.kode_produk = $('#nomor_pengiriman').val();
-                    data.nama_produk = $('#nomor_order').val();
-                    data.sub_produk = $('#nomor_lacak').val();
-                    data.harga = $('#alamat_pengiriman').val();
-                    data.qty = $('#tipe_pengiriman').val();
-                    data.unit = $('#kode_gudang').val();
+                    data.nomor_pengiriman = $('#nomor_pengiriman').val();
+                    data.nomor_order = $('#nomor_order').val();
+                    data.nomor_lacak = $('#nomor_lacak').val();
+                    data.alamat_pengiriman = $('#alamat_pengiriman').val();
+                    data.tipe_pengiriman = $('#tipe_pengiriman').val();
+                    data.kode_gudang = $('#kode_gudang').val();
                     data.status = $('#status').val();
 
                 }

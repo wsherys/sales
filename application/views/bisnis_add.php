@@ -40,12 +40,12 @@
                 <?php }?>
                
                 <?php echo form_open($AddAjax); ?>
+                <?php  ?>
                 <form id="formMhs" method="POST" class="form-horizontal">
                 <div class="form-group">
                     <label for="kode_bisnis" class="col-sm-2 control-label">Kode Bisnis <span style="color: red;">*</span></label>
                     <div class="col-sm-10">
-                    <!-- <input type="text" name="kode_bisnis" id="kode_bisnis" value="<?php if(empty($kode_bisnis)){$kode_bisnis='';}else{ echo $kode_bisnis;}  ?>" class="form-control"> -->
-                    <input type="text" name="kode_bisnis" id="kode_bisnis" value="<?php echo set_value('kode_bisnis'); ?>" class="form-control">
+                    <input type="text" name="kode_bisnis" maxlength="10" placeholder="KODE001" id="kode_bisnis" value="<?php echo set_value('kode_bisnis'); ?>" class="form-control">
                     
                     </div>
                 </div>
@@ -58,7 +58,11 @@
                 <div class="form-group">
                     <label for="kode_nomor" class="col-sm-2 control-label">Kode Nomor <span style="color: red;">*</span></label>
                     <div class="col-sm-10">
-                    <input type="text" name="kode_nomor" id="kode_nomor" value="<?php echo set_value('kode_nomor'); ?>" class="form-control">
+                    <input type="hidden" name="kode_nomor" maxlength="30" placeholder="" id="kode_nomor" 
+                    value="<?php echo $kode_nomor; ?>" class="form-control">
+
+                    <input type="text" disabled name="kode_nomor" maxlength="30" placeholder="" id="kode_nomor" 
+                    value="<?php echo $kode_nomor; ?>" class="form-control">
                     </div>
                 </div>
                 
@@ -70,7 +74,7 @@
                 <div class="form-group">
                     <label for="nama_bisnis" class="col-sm-2 control-label">Nama Bisnis <span style="color: red;">*</span></label>
                     <div class="col-sm-10">
-                    <input type="text" name="nama_bisnis" id="nama_bisnis" value="<?php echo set_value('nama_bisnis'); ?>" class="form-control">
+                    <input type="text" name="nama_bisnis" maxlength="30" placeholder="Toko Baju" id="nama_bisnis" value="<?php echo set_value('nama_bisnis'); ?>" class="form-control">
                     </div>
                 </div>
 

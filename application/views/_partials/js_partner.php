@@ -71,13 +71,13 @@
 
             // Load data for the table's content from an Ajax source
             "ajax": {
-                "url": "<?php echo site_url('CtrlPartner/ajax_list')?>",
+                "url": "<?= site_url($ListAjax); ?>",
                 "type": "POST",
                 "data": function ( data ) {
-                    data.kode_produk = $('#kode_partner').val();
-                    data.nama_produk = $('#nama_partner').val();
-                    data.sub_produk = $('#status_npwp').val();
-                    data.harga = $('#alamat').val();
+                    data.kode_partner = $('#kode_partner').val();
+                    data.nama_partner = $('#nama_partner').val();
+                    data.status_npwp = $('#status_npwp').val();
+                    data.alamat = $('#alamat').val();
                     data.status = $('#status').val();
 
                 }

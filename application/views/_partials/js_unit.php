@@ -71,12 +71,12 @@
 
             // Load data for the table's content from an Ajax source
             "ajax": {
-                "url": "<?php echo site_url('CtrlUnit/ajax_list')?>",
+                "url": "<?= site_url($ListAjax); ?>",
                 "type": "POST",
                 "data": function ( data ) {
-                    data.kode_produk = $('#kode_unit').val();
-                    data.nama_produk = $('#nama_unit').val();
-                    data.sub_produk = $('#tipe_unit').val();
+                    data.kode_unit = $('#kode_unit').val();
+                    data.nama_unit = $('#nama_unit').val();
+                    data.tipe_unit = $('#tipe_unit').val();
                     data.status = $('#status').val();
 
                 }
