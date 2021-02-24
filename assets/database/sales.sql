@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 06, 2021 at 12:52 PM
+-- Generation Time: Feb 24, 2021 at 06:50 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
 
@@ -414,17 +414,17 @@ CREATE TABLE `tbl_menu` (
 --
 
 INSERT INTO `tbl_menu` (`id`, `menu`, `name`, `locate_url`, `icon_name`) VALUES
-(1, 'master', 'Bisnis', 'CtrlBisnis', 'fa fa-circle-o text-aqua'),
-(2, 'master', 'Merek/Brand', 'CtrlMerek', 'fa fa-circle-o text-aqua'),
-(3, 'master', 'Produk', 'CtrlProduk', 'fa fa-circle-o text-aqua'),
-(4, 'master', 'C.O.A / Kas masuk', 'CtrlCOA', 'fa fa-circle-o text-aqua'),
-(5, 'master', 'Partner', 'CtrlPartner', 'fa fa-circle-o text-aqua'),
-(6, 'master', 'Unit', 'CtrlUnit', 'fa fa-circle-o text-aqua'),
-(7, 'master', 'Gudang/warehouse', 'CtrlGudang', 'fa fa-circle-o text-aqua'),
-(8, 'master', 'Bank', 'CtrlBank', 'fa fa-circle-o text-aqua'),
-(9, 'master', 'Bank Cabang', 'CtrlBankCabang', 'fa fa-circle-o text-aqua'),
-(10, 'master', 'penjualan', 'CtrlPenjualan', 'fa fa-circle-o text-aqua'),
-(11, 'master', 'pengiriman', 'CtrlPengiriman', 'fa fa-circle-o text-aqua'),
+(1, 'master', 'Bisnis', 'Bisnis', 'fa fa-circle-o text-aqua'),
+(2, 'master', 'Merek/Brand', 'Merek', 'fa fa-circle-o text-aqua'),
+(3, 'master', 'Produk', 'Produk', 'fa fa-circle-o text-aqua'),
+(4, 'master', 'C.O.A / Kas masuk', 'KasMasuk', 'fa fa-circle-o text-aqua'),
+(5, 'master', 'Partner', 'Partner', 'fa fa-circle-o text-aqua'),
+(6, 'master', 'Unit', 'Unit', 'fa fa-circle-o text-aqua'),
+(7, 'master', 'Gudang/warehouse', 'Gudang', 'fa fa-circle-o text-aqua'),
+(8, 'master', 'Bank', 'Bank', 'fa fa-circle-o text-aqua'),
+(9, 'master', 'Bank Cabang', 'BankCabang', 'fa fa-circle-o text-aqua'),
+(10, 'master', 'penjualan', 'Penjualan', 'fa fa-circle-o text-aqua'),
+(11, 'master', 'pengiriman', 'Pengiriman', 'fa fa-circle-o text-aqua'),
 (13, 'laporan', 'Harian', '#', 'fa fa-circle-o text-aqua'),
 (14, 'laporan', 'mingguan', '#', 'fa fa-circle-o text-aqua'),
 (182, 'laporan', 'bulanan', '#', 'fa fa-circle-o text-aqua'),
