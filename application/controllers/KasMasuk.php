@@ -1,12 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class CtrlCOA extends CI_Controller {
+class KasMasuk extends CI_Controller {
 
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('Tbl_COA','coa');
+		$this->load->model('Tbl_KasMasuk','km');
 		$this->load->model('Tbl_menu');
 	}
 
@@ -15,7 +15,7 @@ class CtrlCOA extends CI_Controller {
 		// $this->load->helper('url');
 		$this->load->helper('form');
 		
-		$status = $this->coa->get_status();
+		$status = $this->km->get_status();
 		$opt = array('' => 'pilih status');
 
 		foreach ($status as $sts) {
@@ -36,29 +36,31 @@ class CtrlCOA extends CI_Controller {
 		$this->load->view('_partials/head');
 		$this->load->view("_partials/navbar");
 		$this->load->view("_partials/sidebar",$data);
-		$this->load->view("_partials/breadcrumb_coa");
-		$this->load->view('dashboard_coa');
+		$this->load->view("_partials/breadcrumb_kasmasuk");
+		$this->load->view('dashboard_kasmasuk');
 		$this->load->view("_partials/footer");
-		$this->load->view('_partials/js_coa');
+		$this->load->view('_partials/js_kasmasuk');
 	}
 
 	public function ajax_list()
 	{
-		$list = $this->coa->get_datatables();
+		$list = $this->km->get_datatables();
 		$data = array();
 		// $no = $_POST['start'];
 		$no = $this->input->post('start');
-		foreach ($list as $coa) {
+		foreach ($list as $km) {
 			$no++;
 			$row = array();
 			$row[] = $no;
-			$row[] = $coa->akun;
-			$row[] = $coa->sub_akun;
-			$row[] = $coa->kode_grup_coa;
-			$row[] = $coa->kas_masuk;
-			$row[] = $coa->keterangan;
-			if($coa->status==='1'){$status='Aktif'; $row[] = $status;}
-			elseif($coa->status==='0'){$status='Tidak aktif'; $row[] = $status;}
+			$row[] = $km->nama_bisnis;
+			$row[] = $km->tgl_invoice;
+			$row[] = $km->jangka_waktu;
+			$row[] = $km->nomor_transaksi;
+			$row[] = $km->nama_bank;
+			$row[] = $km->nomor_rekening;
+			$row[] = $km->harga_total;
+			if($km->status==='1'){$status='Aktif'; $row[] = $status;}
+			elseif($km->status==='0'){$status='Tidak aktif'; $row[] = $status;}
 			
 
 			$data[] = $row;
@@ -67,8 +69,8 @@ class CtrlCOA extends CI_Controller {
 		$output = array(
 						// "draw" => $_POST['draw'],
 						"draw" => $this->input->post('draw'),
-						"recordsTotal" => $this->coa->count_all(),
-						"recordsFiltered" => $this->coa->count_filtered(),
+						"recordsTotal" => $this->km->count_all(),
+						"recordsFiltered" => $this->km->count_filtered(),
 						"data" => $data,
 				);
 		//output to json format
